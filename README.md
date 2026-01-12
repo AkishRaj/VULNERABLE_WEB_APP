@@ -1,7 +1,7 @@
-## PROJECT TITLE : SECURITY BREACH SIMULATOR: THE HACKER’S PLAYGROUND
+# PROJECT TITLE : SECURITY BREACH SIMULATOR: THE HACKER’S PLAYGROUND
 
 
-# INTRODUCTION
+## INTRODUCTION
 In today’s digital world, cyberattacks are becoming more frequent, complex,
 and dangerous. Organizations face constant threats such as hacking, data
 breaches, malware attacks, and unauthorized access to sensitive information.
@@ -21,29 +21,29 @@ Overall, this simulator helps students, developers, and security professionals
 enhance their cybersecurity awareness, improve defensive strategies, and
 better understand the mindset of attackers—making it a powerful educational
 tool for modern cyber defense.
-5
-OBJECTIVES
-1.Educational Foundation
+
+## OBJECTIVES
+### 1.Educational Foundation
 • To create an interactive learning platform for understanding web
 security
 • To demonstrate real-world attack scenarios in a controlled, safe
 environment
 • To demonstrate real-world attack scenarios in a controlled, safe
 environment
-2.Technical Implementation
+### 2.Technical Implementation
 • To develop a full-stack web application (Frontend + Backend +
 Database)
 • To intentionally implement OWASP Top 10 vulnerabilities for
 demonstration
 • To create a modular architecture allowing easy addition of new
 vulnerabilities.
-3.Security Awareness
+### 3.Security Awareness
 • To illustrate the impact and consequences of security breaches
 • To demonstrate how seemingly minor flaws can lead to major
 security incidents
 • To promote security-first mindset among developers and students
-6
-4. For Students/Developers:
+
+### 4. For Students/Developers:
 • Understand SQL Injection mechanics and prevention techniques
 • Learn about XSS attack vectors and sanitization methods
 • Recognize authentication bypass vulnerabilities
@@ -54,10 +54,10 @@ security incidents
 • Enable step-by-step attack execution with visual feedback.
 • Show both vulnerable and secure code implementations.
 • Document mitigation strategies for each vulnerability.
-7
-IMPLEMENTATION
-RUN.BAT EXCUTION
-Objective
+
+## IMPLEMENTATION
+### RUN.BAT EXCUTION
+### Objective
 To start and run the vulnerable web application "Hacker's Playground" on
 localhost for security vulnerability demonstrations.
 Tool Used
@@ -79,10 +79,11 @@ The script automatically:
 3. Creates package.json (if missing)
 4. Installs dependencies (express, sqlite3)
 5. Starts the Node.js server
-8
+<img width="941" height="501" alt="image" src="https://github.com/user-attachments/assets/0d91a97b-dbdf-42c9-a093-736f732ba0a0" />
+
 http:localhost:3000
-9
-1.SQL INJECTION
+
+## 1.SQL INJECTION
 Objective
 To test whether the login functionality is vulnerable to SQL Injection and
 allows authentication bypass.
