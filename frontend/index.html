@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Hacker's Playground - All OWASP Attacks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Matrix Background -->
+    <div class="matrix-bg"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="⚡ HACKER'S PLAYGROUND">⚡ HACKER'S PLAYGROUND</h1>
+                <h2 class="subtitle">OWASP Top 10 Vulnerabilities Demonstration</h2>
+            </div>
+            <div class="terminal-bar">
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-text">root@kali:~/attacks</div>
+                <div class="time" id="hackerTime">00:00:00</div>
+            </div>
+        </header>
+
+        <!-- Attack Dashboard -->
+        <div class="dashboard">
+            <!-- SQL Injection Card -->
+            <div class="card red-card">
+                <div class="card-header">
+                    <i class="fas fa-database"></i>
+                    <h3>1. SQL INJECTION</h3>
+                    <span class="badge critical">CRITICAL</span>
+                </div>
+                <div class="card-content">
+                    <p>Inject SQL commands to manipulate database</p>
+                    
+                    <div class="input-group">
+                        <input type="text" id="sqlInput" placeholder="Enter username or SQL payload" class="hacker-input">
+                        <button onclick="executeSQLi()" class="btn red-btn">
+                            <i class="fas fa-bolt"></i> Execute Attack
+                        </button>
+                    </div>
+                    
+                    <div class="payload-box">
+                        <h4><i class="fas fa-code"></i> Payload Examples:</h4>
+                        <div class="payloads">
+                            <code>' OR '1'='1</code>
+                            <code>admin' --</code>
+                            <code>' UNION SELECT username, password FROM users --</code>
+                            <code>'; DROP TABLE users; --</code>
+                        </div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4><i class="fas fa-terminal"></i> Results:</h4>
+                        <pre id="sqlResult">Results will appear here...</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- XSS Card -->
+            <div class="card yellow-card">
+                <div class="card-header">
+                    <i class="fas fa-skull-crossbones"></i>
+                    <h3>2. CROSS-SITE SCRIPTING</h3>
+                    <span class="badge critical">CRITICAL</span>
+                </div>
+                <div class="card-content">
+                    <p>Inject malicious scripts into web pages</p>
+                    
+                    <div class="input-group">
+                        <textarea id="xssInput" placeholder="Enter XSS payload here..." class="hacker-input"></textarea>
+                        <button onclick="executeXSS()" class="btn yellow-btn">
+                            <i class="fas fa-code"></i> Post XSS
+                        </button>
+                    </div>
+                    
+                    <div class="payload-box">
+                        <h4><i class="fas fa-code"></i> XSS Payloads:</h4>
+                        <div class="payloads">
+                            <code>&lt;script&gt;alert('HACKED')&lt;/script&gt;</code>
+                            <code>&lt;img src=x onerror=alert(1)&gt;</code>
+                            <code>&lt;svg onload=alert('XSS')&gt;</code>
+                            <code>&lt;iframe src="javascript:alert('XSS')"&gt;</code>
+                        </div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4><i class="fas fa-eye"></i> Live Preview:</h4>
+                        <div id="xssPreview">XSS will execute here...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Broken Auth Card -->
+            <div class="card purple-card">
+                <div class="card-header">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>3. BROKEN AUTHENTICATION</h3>
+                    <span class="badge high">HIGH</span>
+                </div>
+                <div class="card-content">
+                    <p>Bypass login and access control</p>
+                    
+                    <div class="input-group">
+                        <input type="text" id="authUser" placeholder="Username" class="hacker-input">
+                        <input type="password" id="authPass" placeholder="Password" class="hacker-input">
+                        <button onclick="bypassAuth()" class="btn purple-btn">
+                            <i class="fas fa-unlock"></i> Bypass Login
+                        </button>
+                    </div>
+                    
+                    <div class="payload-box">
+                        <h4><i class="fas fa-key"></i> Bypass Methods:</h4>
+                        <div class="payloads">
+                            <code>Username: admin' --</code>
+                            <code>Password: [anything]</code>
+                            <code>Use token: admin_token</code>
+                        </div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4><i class="fas fa-shield-alt"></i> Auth Status:</h4>
+                        <pre id="authResult">Authentication results...</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sensitive Data Card -->
+            <div class="card blue-card">
+                <div class="card-header">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>4. SENSITIVE DATA EXPOSURE</h3>
+                    <span class="badge high">HIGH</span>
+                </div>
+                <div class="card-content">
+                    <p>Access exposed confidential information</p>
+                    
+                    <div class="button-group">
+                        <button onclick="getAllData()" class="btn blue-btn">
+                            <i class="fas fa-database"></i> Get All User Data
+                        </button>
+                        <button onclick="getSecrets()" class="btn blue-btn">
+                            <i class="fas fa-key"></i> Get Secrets
+                        </button>
+                        <button onclick="getCreditCards()" class="btn blue-btn">
+                            <i class="fas fa-credit-card"></i> Get Credit Cards
+                        </button>
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Exposed Data:</h4>
+                        <pre id="dataResult">Sensitive data will appear here...</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Misconfig Card -->
+            <div class="card green-card">
+                <div class="card-header">
+                    <i class="fas fa-cogs"></i>
+                    <h3>5. SECURITY MISCONFIGURATION</h3>
+                    <span class="badge medium">MEDIUM</span>
+                </div>
+                <div class="card-content">
+                    <p>Exploit insecure configurations</p>
+                    
+                    <div class="button-group">
+                        <button onclick="getConfig()" class="btn green-btn">
+                            <i class="fas fa-cog"></i> Get Config
+                        </button>
+                        <button onclick="debugInfo()" class="btn green-btn">
+                            <i class="fas fa-bug"></i> Debug Info
+                        </button>
+                        <button onclick="listBackups()" class="btn green-btn">
+                            <i class="fas fa-archive"></i> List Backups
+                        </button>
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4><i class="fas fa-info-circle"></i> System Info:</h4>
+                        <pre id="configResult">Configuration data...</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Output -->
+        <div class="terminal">
+            <div class="terminal-header">
+                <i class="fas fa-terminal"></i> ATTACK CONSOLE
+                <span class="console-status" id="consoleStatus">READY</span>
+            </div>
+            <div class="terminal-body">
+                <div id="terminalOutput">
+                    <div class="log"><span class="time">[00:00:00]</span> <span class="success">✓</span> System initialized</div>
+                    <div class="log"><span class="time">[00:00:00]</span> <span class="success">✓</span> Vulnerabilities loaded</div>
+                    <div class="log"><span class="time">[00:00:00]</span> <span class="info">→</span> Ready for attacks</div>
+                </div>
+                <div class="terminal-input">
+                    <span class="prompt">root@kali:~#</span>
+                    <input type="text" id="commandInput" placeholder="Type 'help' for commands" autocomplete="off">
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Attacks Executed:</span>
+                    <span class="stat-value" id="attackCount">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Data Exposed:</span>
+                    <span class="stat-value" id="dataCount">0 records</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Vulnerabilities:</span>
+                    <span class="stat-value">5 Active</span>
+                </div>
+            </div>
+            <div class="warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                FOR EDUCATIONAL PURPOSES ONLY - DO NOT DEPLOY
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
