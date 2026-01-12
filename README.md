@@ -65,7 +65,9 @@ security incidents
 
 • Understand security misconfiguration impacts
 
+
 5. For Evaluation/Demonstration:
+   
 • Provide live, interactive demonstration capabilities.
 
 • Enable step-by-step attack execution with visual feedback.
@@ -79,121 +81,198 @@ security incidents
 ### Objective
 To start and run the vulnerable web application "Hacker's Playground" on
 localhost for security vulnerability demonstrations.
+
 Tool Used
+
 • Operating System: Windows 10/11
+
 • Command Line: PowerShell/CMD
+
 • File: RUN.bat (Batch script)
+
 • Prerequisites: Node.js installed
+
 Step 1: Navigate to Project Directory
 cmd
 cd A:\VULNERABLE_APP
+
 Step 2: Execute Batch File
 cmd
 RUN.bat
 or double-click RUN.bat in File Explorer
+
 Step 3: Automatic Process
+
 The script automatically:
+
 1. Checks for Node.js installation
-2. Navigates to backend folder
-3. Creates package.json (if missing)
-4. Installs dependencies (express, sqlite3)
-5. Starts the Node.js server
+2. 
+3. Navigates to backend folder
+4. 
+5. Creates package.json (if missing)
+6. 
+7. Installs dependencies (express, sqlite3)
+8. 
+9. Starts the Node.js server
+    
 <img width="941" height="501" alt="image" src="https://github.com/user-attachments/assets/0d91a97b-dbdf-42c9-a093-736f732ba0a0" />
 
 http:localhost:3000
+<img width="941" height="499" alt="image" src="https://github.com/user-attachments/assets/17937b6e-2487-4a15-bb50-ad9c365065c7" />
+
 
 ## 1.SQL INJECTION
+
 Objective
+
 To test whether the login functionality is vulnerable to SQL Injection and
 allows authentication bypass.
+
 Tool Used
+
 • Web Browser
+
 Procedure
+
 1. The vulnerable web application was started locally.
-2. Burp Suite was configured as a proxy to intercept browser requests.
-3. Interception mode was enabled in Burp Suite.
-4. A login request was sent with an SQL Injection payload in the
+   
+3. Burp Suite was configured as a proxy to intercept browser requests.
+   
+5. Interception mode was enabled in Burp Suite.
+   
+7. A login request was sent with an SQL Injection payload in the
 username field.
-5. Username: admin' --
-6. Password: anything
-7. The intercepted request was forwarded to the server.
+
+9. Username: admin' --
+    
+11. Password: anything
+    
+13. The intercepted request was forwarded to the server.
+    
 Result
-• Login was successful without entering the correct password.
-• The application redirected to the main page.
-• Authentication was bypassed.
-10
-2. Cross-Site Scripting (XSS) Implementation
+<img width="941" height="557" alt="image" src="https://github.com/user-attachments/assets/c9d4351d-4500-41a6-a99c-2e2af14bfedc" />
+
+
+## 2. Cross-Site Scripting (XSS) Implementation
+
 Objective
+
 To test whether the application is vulnerable to Cross-Site Scripting (XSS)
 by injecting malicious scripts into user-controlled input.
+
 Tool Used
+
 • Web Browser (Chrome / Edge)
+
 Procedure
+
 1. The login page of the application was opened in the browser.
-2. A malicious script was injected through the URL parameter.
-3. <script>alert('XSS')</script>
-4. The page was loaded with the injected input.
+   
+3. A malicious script was injected through the URL parameter.
+   
+4. <script>alert('XSS')</script>
+
+5. The page was loaded with the injected input.
+   
 Result
+<img width="941" height="603" alt="image" src="https://github.com/user-attachments/assets/522fafda-4968-4df9-8e8e-30fea1da1a66" />
+
 • A JavaScript alert popup was displayed in the browser.
-11
+
 • The injected script executed successfully.
-3. Broken Authentication Implementation
+
+## 3. Broken Authentication Implementation
 Objective
+
 To test whether the authentication mechanism can be bypassed without
 valid user credentials.
+
 Tool Used
+
 • Web Browser
+
 • Burp Suite (optional)
+
 Procedure
-1. The login page of the application was opened.
-2. An invalid or manipulated input was entered in the login fields.
-3. Username: ' OR '1'='1
-12
-4. Password: ' OR '1'='1
-5. The login request was submitted to the server.
+ The login page of the application was opened.
+   
+ An invalid or manipulated input was entered in the login fields.
+ 
+ Username: ' OR '1'='1
+
+ Password: ' OR '1'='1
+ 
+ The login request was submitted to the server.
+ 
 Result
+
 • Login was successful without valid credentials.
+
 • The user was redirected to the main application page.
-13
-4. Security Misconfiguration
+
+
+
+## 4. Security Misconfiguration
 Objective
+
 To identify insecure server configurations and missing security controls in
 the web application.
+
 Procedure
+
 1. The application was executed locally on:
 2. http://localhost:3000
+   
 Result
+
 • Multiple security headers were found to be missing.
+
 • The application server was running on an open port.
+
 • Default server configuration was exposed.
-14
-5. Sensitive data exposure
+
+<img width="941" height="465" alt="image" src="https://github.com/user-attachments/assets/acb6166f-884a-4af3-9b12-4813f881acd1" />
+
+## 5. Sensitive data exposure
 Objective
+
 To identify whether sensitive user credentials are stored and handled
 securely in the application.
+
 Procedure
+
 1. The application database file was accessed locally.
+   
 2. The SQLite command-line interface was used to view stored user
 data.
+
 3. SELECT * FROM users;
+   
 4. The contents of the users table were observed.
 Result
+
 • User passwords were stored in plain text.
+
 • Sensitive credential data was directly visible in the database.
-15
-CONCLUSION :
+<img width="941" height="516" alt="image" src="https://github.com/user-attachments/assets/1ed30d58-0d48-413c-a79b-b8826f96e931" />
+
+<img width="949" height="355" alt="image" src="https://github.com/user-attachments/assets/ad6eb527-747e-4140-bb05-dff3db4f78c7" />
+
+
+## CONCLUSION :
 This project successfully demonstrated common web application security
 vulnerabilities through the development and testing of an intentionally
 vulnerable.
+
 Vulnerabilities such as SQL Injection, Cross-Site Scripting (XSS),
 broken authentication, security misconfiguration, and sensitive data
 exposure were identified and validated using both manual techniques and
 security testing in a controlled local environment.
+
 The project highlights the risks associated with insecure coding practices
-and improper security controls in web applications.
-By practically performing these attacks, a better understanding of how
+and improper security controls in web applications.By practically performing these attacks, a better understanding of how
 vulnerabilities arise and how they impact system security was achieved.
 This work emphasizes the importance of secure design principles, proper
 input validation, and secure data handling in real-world web application
 development.
-16
+
