@@ -66,7 +66,7 @@ security incidents
 • Understand security misconfiguration impacts
 
 
-5. For Evaluation/Demonstration:
+### 5. For Evaluation/Demonstration:
    
 • Provide live, interactive demonstration capabilities.
 
@@ -106,14 +106,14 @@ Step 3: Automatic Process
 The script automatically:
 
 1. Checks for Node.js installation
-2. 
-3. Navigates to backend folder
-4. 
-5. Creates package.json (if missing)
-6. 
-7. Installs dependencies (express, sqlite3)
-8. 
-9. Starts the Node.js server
+ 
+2. Navigates to backend folder
+ 
+3. Creates package.json (if missing)
+ 
+4. Installs dependencies (express, sqlite3)
+ 
+5. Starts the Node.js server
     
 <img width="941" height="501" alt="image" src="https://github.com/user-attachments/assets/0d91a97b-dbdf-42c9-a093-736f732ba0a0" />
 
@@ -205,6 +205,7 @@ Procedure
  The login request was submitted to the server.
  
 Result
+<img width="949" height="570" alt="image" src="https://github.com/user-attachments/assets/cd35426f-f076-469d-b553-95d0a578ad1b" />
 
 • Login was successful without valid credentials.
 
